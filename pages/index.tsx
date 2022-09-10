@@ -1,86 +1,72 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
+import type { NextPage } from "next";
+import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
+
+import Nav from "../components/Nav";
+import { BiSearchAlt } from "react-icons/bi";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 const Home: NextPage = () => {
-  return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+	const handleSearchAppears = () => {
+		const search = document.getElementById("searchInput");
+		search?.classList.toggle("hidden");
+	};
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        <h1 className="text-6xl font-bold">
-          Welcome to{' '}
-          <a className="text-blue-600" href="https://nextjs.org">
-            Next.js!
-          </a>
-        </h1>
+	const handleMenuAppers = () => {
+		const menu = document.getElementById("menu");
+		menu?.classList.toggle("hidden");
+	};
 
-        <p className="mt-3 text-2xl">
-          Get started by editing{' '}
-          <code className="rounded-md bg-gray-100 p-3 font-mono text-lg">
-            pages/index.tsx
-          </code>
-        </p>
+	return (
+		<>
+			<Head>
+				<title>Cremositos</title>
+				<link rel="icon" type="image/jpg" href="/images/icon.jpg" />
+				<meta charSet="UTF-8" />
+				<meta name="author" content="SoyUltro" />
+				<meta name="theme-color" content="#29ddde" />
+				<meta name="copyright" content="SoyUltro" />
+				<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0" />
+				<meta name="keywords" content="cremositos, cremositos cookies, cremosito, galletas" />
+				<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+			</Head>
 
-        <div className="mt-6 flex max-w-4xl flex-wrap items-center justify-around sm:w-full">
-          <a
-            href="https://nextjs.org/docs"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Documentation &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Find in-depth information about Next.js features and its API.
-            </p>
-          </a>
+			{/* Header */}
+			<header className="fixed top-0 left-0 right-0 z-[999] flex items-center justify-between bg-light py-6 px-[7%] font-quicksand lg:py-5 lg:px-12">
+				<div className="flex items-center space-x-2">
+					<Link href="#">
+						<a>
+							<Image
+								src="/images/icon.jpg"
+								className="rounded-full"
+								height="64"
+								width="64"
+								alt="Cremositos logo"
+							/>
+						</a>
+					</Link>
+					<h1 className="text-3xl font-extrabold text-night">Cremositos</h1>
+				</div>
+				<Nav />
+				<div className="flex items-center space-x-8">
+					<BiSearchAlt onClick={handleSearchAppears} className="h-8 w-8 cursor-pointer" />
+					<GiHamburgerMenu onClick={handleMenuAppers} className="hidden h-8 w-8 cursor-pointer md:inline-block" />
+				</div>
 
-          <a
-            href="https://nextjs.org/learn"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Learn &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Learn about Next.js in an interactive course with quizzes!
-            </p>
-          </a>
+				<div id="searchInput" className="absolute top-full right-0 my-6 mx-[7%] hidden h-20 bg-transparent">
+					<input
+						type="search"
+						placeholder="Search..."
+						className="mr-[7%] h-full w-full rounded-2xl bg-light py-2 px-4 text-2xl text-night shadow-custom focus-within:outline-none"
+					/>
+				</div>
+			</header>
 
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Examples &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Discover and deploy boilerplate example Next.js projects.
-            </p>
-          </a>
+			{/* Home Section */}
+			<section></section>
+		</>
+	);
+};
 
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className="mt-6 w-96 rounded-xl border p-6 text-left hover:text-blue-600 focus:text-blue-600"
-          >
-            <h3 className="text-2xl font-bold">Deploy &rarr;</h3>
-            <p className="mt-4 text-xl">
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className="flex h-24 w-full items-center justify-center border-t">
-        <a
-          className="flex items-center justify-center gap-2"
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-        </a>
-      </footer>
-    </div>
-  )
-}
-
-export default Home
+export default Home;
