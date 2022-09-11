@@ -2,7 +2,7 @@ import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {
 	return (
-		<Html className="text-[55%] transition-all duration-200 lg:text-[62.5%] sm:text-[50%]">
+		<Html>
 			<Head>
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
